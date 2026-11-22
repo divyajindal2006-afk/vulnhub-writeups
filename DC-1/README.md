@@ -1,6 +1,6 @@
 # DC-1
 
-**Platform:** VulnHub | **Difficulty:** Beginner | **Date:** Nov. 2026
+**Platform:** VulnHub | **Difficulty:** Beginner | **Date:** Feb. 2026
 
 > Author: DCAU — [VulnHub page](https://www.vulnhub.com/entry/dc-1,292/)
 
