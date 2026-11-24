@@ -2,7 +2,7 @@
 
 **Platform:** VulnHub | **Difficulty:** Beginner | **Date:** March. 2026
 
-> [VulnHub page]([https://www.vulnhub.com/entry/hogwarts-dobby,597/])
+> [VulnHub page](https://www.vulnhub.com/entry/hogwarts-dobby,597/)
 
 ## 1. Reconnaissance
 
