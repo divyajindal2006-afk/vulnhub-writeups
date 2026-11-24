@@ -165,7 +165,7 @@ root
 bash-5.0# cd /root
 bash-5.0# ls
 proof.txt  snap
-bash-5.0# cat proof.txt
+bash-5.0# vi proof.txt
 ```
 
 ```
