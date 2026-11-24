@@ -2,7 +2,7 @@
 
 **Platform:** VulnHub | **Difficulty:** Beginner | **Date:** March. 2026
 
-> [VulnHub page](https://www.vulnhub.com/entry/hogwarts-dobby,611/)
+> [VulnHub page]([https://www.vulnhub.com/entry/hogwarts-dobby,597/])
 
 ## 1. Reconnaissance
 
@@ -130,7 +130,7 @@ flag1{28327a4964cb391d74111a185a5047ad}
 
 ### Switching to the dobby user
 
-The password recovered earlier from the `/log` page (`ilikesocks`) is reused to switch to the box's named user:
+The password recovered earlier from the `/log` page (`ilikesocks`) is used to switch to the box's named user:
 
 ```bash
 www-data@HogWarts:/home/dobby$ su dobby
@@ -169,15 +169,32 @@ bash-5.0# cat proof.txt
 ```
 
 ```
-[Harry Potter and the... ASCII art banner]
+                                                                 
+        ___                             | '  \
+   ___  \ /  ___         ,'\_           | .-. \        /|
+   \ /  | |,'__ \  ,'\_  |   \          | | | |      ,' |_   /|
+ _ | |  | |\/  \ \ |   \ | |\_|    _    | |_| |   _ '-. .-',' |_   _
+// | |  | |____| | | |\_|| |__    //    |     | ,'_`. | | '-. .-',' `. ,'\_
+\\_| |_,' .-, _  | | |   | |\ \  //    .| |\_/ | / \ || |   | | / |\  \|   \
+ `-. .-'| |/ / | | | |   | | \ \//     |  |    | | | || |   | | | |_\ || |\_|
+   | |  | || \_| | | |   /_\  \ /      | |`    | | | || |   | | | .---'| |
+   | |  | |\___,_\ /_\ _      //       | |     | \_/ || |   | | | |  /\| |
+   /_\  | |           //_____//       .||`      `._,' | |   | | \ `-' /| |
+        /_\           `------'        \ |   AND        `.\  | |  `._,' /_\
+                                       \|       THE          `.\
+                                            _  _  _  _  __ _  __ _ /_
+                                           (_`/ \|_)/ '|_ |_)|_ |_)(_
+                                           ._)\_/| \\_,|__| \|__| \ _)
+                                                           _ ___ _      _
+                                                          (_` | / \|\ ||__
+                                                          ._) | \_/| \||___
+
+
 
 root{63a9f0ea7bb98050796b649e85481845!!}
 ```
 
 ## 5. Lessons Learned
-
-- Hiding information through Base64 or Brainfuck encoding is not security: it only slows down a human reader for a few seconds and offers zero real protection against automated enumeration.
 - Allowing untrusted or low-trust accounts access to WordPress's **theme/plugin editor** is equivalent to granting them remote code execution — this feature should be disabled in production (`DISALLOW_FILE_EDIT` in `wp-config.php`) and access should be restricted to fully trusted administrators only.
-- Password reuse strikes again: the same password recovered from a leftover `/log` file granted direct `su` access to a real system account.
 - SUID should never be set on general-purpose binaries (`find`, `vim`, `less`, `cp`, ...) — see [GTFOBins](https://gtfobins.github.io/) for the full list of abusable binaries.
-- **Fix:** remove debug/leftover files like `/log` and `/alohomora` before going to production, disable the WordPress file editor, update WordPress and its theme, and remove the SUID bit from `find` (`chmod u-s /usr/bin/find`).
+- **Fix:** before going to production, disable the WordPress file editor, update WordPress and its theme, and remove the SUID bit from `find` (`chmod u-s /usr/bin/find`).
